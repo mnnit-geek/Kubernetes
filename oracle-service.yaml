@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oracle
+  labels:
+    name: oracle
+    app: dcs
+spec:
+  ports:
+    - port: 1521
+      name: oracle
+      targetPort: 1521
+  selector:
+    name: oracle
+    app: dcs

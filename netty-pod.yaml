@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: netty
+  labels:
+    name: netty
+    app: dcs
+spec:
+  containers:
+    - name: netty
+      image: amankataria/centos:latest
+      ports:
+        - containerPort: 9999
+          name: http
+          protocol: TCP
+      command: ["sh"]
+      args: ["/usrdata/apps/appserver/netty/bin/start-tej-netty-server-kubernetes.sh"]

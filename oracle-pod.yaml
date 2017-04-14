@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: oracle
+  labels:
+    name: oracle
+    app: dcs
+spec:
+  containers:
+    - name: oracle
+      image: sath89/oracle-12c:latest
+      ports:
+        - containerPort: 1521
+          protocol: TCP
+      volumeMounts:
+        - mountPath: /home/oracle/              # directory location on container
+          name: oracle-data-volume
+      #command: ["sqlplus"]
+      #args: ["<", "/home/oracle/DEV_application_properties.sql"]
+  volumes:
+  - name: oracle-data-volume
+    hostPath:
+      path: /Users/Aman/Documents/dockerpoc/    # directory location on host
